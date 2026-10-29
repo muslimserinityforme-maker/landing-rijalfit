@@ -735,3 +735,8 @@ html:not(.js) .section__title::after { transform: scaleX(1); }
   .section__title::after { transform: scaleX(1); }
   .hl { background-size: 100% 100%; }
 }
+
+/* Mur de visages : le clic ouvre le témoignage sur YouTube */
+.wall__play { margin-top: 8px; font-size: .78rem; font-weight: 600; color: var(--or-dark); letter-spacing: .02em; }
+.wall__card:hover .wall__play { color: var(--forest); }
+.avatar img { object-position: center 30%; }
