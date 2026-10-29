@@ -206,7 +206,7 @@ html:not(.js) .section__title::after { transform: scaleX(1); }
 .hero__title {
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
-  font-size: clamp(2.3rem, 5.6vw, 3.8rem);
+  font-size: clamp(1.6rem, 3.3vw, 2.8rem);
   line-height: 1.08;
   color: var(--blanc);
   margin-bottom: 1.4rem;
@@ -715,6 +715,7 @@ html:not(.js) .section__title::after { transform: scaleX(1); }
   .nav__link { display: none; }
   .hero__actions { justify-content: center; }
   .hero__inner { flex-direction: column-reverse; gap: 44px; text-align: center; }
+  .hero__title { font-size: clamp(1.4rem, 6.2vw, 2.4rem); }
   .hero__sub { margin-left: auto; margin-right: auto; }
   .hero__image { flex-basis: auto; width: min(300px, 78%); }
   .chip--1 { left: -14px; } .chip--2 { right: -14px; } .chip--3 { left: -6px; }

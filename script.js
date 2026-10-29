@@ -7,9 +7,10 @@
     const out = document.createDocumentFragment();
     el.childNodes.forEach((node) => {
       if (node.nodeType === 3) {
-        node.textContent.split(/(\s+)/).forEach((part) => {
+        // Séparation sur les espaces normaux seulement : « avant ? » (espace insécable) reste collé
+        node.textContent.split(/([ \t\r\n]+)/).forEach((part) => {
           if (!part) return;
-          if (/^\s+$/.test(part)) { out.appendChild(document.createTextNode(' ')); return; }
+          if (/^[ \t\r\n]+$/.test(part)) { out.appendChild(document.createTextNode(' ')); return; }
           const span = document.createElement('span');
           span.className = 'w';
           span.style.setProperty('--i', i++);
