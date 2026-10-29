@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ressources gratuites — Rijal Fit</title>
+  <title>Ressources gratuites, Rijal Fit</title>
   <meta name="description" content="La série santé de Rijal Fit : une vidéo et un PDF par épisode, pour les hommes musulmans qui veulent reprendre leur corps en main." />
   <meta name="theme-color" content="#142a20" />
 
@@ -20,8 +20,10 @@
 
   <nav class="nav" aria-label="Menu principal">
     <a href="index.html" class="nav__brand">Rijal Fit</a>
+    <span class="nav__break" aria-hidden="true"></span>
     <div class="nav__links">
-      <a href="index.html" class="nav__link">Accueil</a>
+      <a href="ressources.html" class="nav__link">Ressources gratuites</a>
+      <a href="#recherche" class="nav__link">Recherche</a>
       <a href="https://ton-bilan-sante.vercel.app/" class="btn btn--primary btn--small">Faire mon bilan offert</a>
     </div>
   </nav>
@@ -40,6 +42,11 @@
   <main>
     <section class="episodes">
       <div class="container">
+        <div class="search" id="recherche">
+          <label for="recherche-champ">Rechercher un épisode</label>
+          <input type="search" id="recherche-champ" placeholder="Un numéro (1, 2…) ou un mot (sommeil, corps…)" autocomplete="off" />
+          <p class="search__empty" id="recherche-vide" hidden>Aucun épisode ne correspond. Essaie un autre mot ou un numéro.</p>
+        </div>
         <!-- Les épisodes sont générés par ressources.js à partir de la liste EPISODES -->
         <div class="episodes__list" id="episodes"></div>
         <noscript><p>Active JavaScript pour voir les épisodes.</p></noscript>
@@ -63,8 +70,9 @@
   <footer class="footer">
     <div class="container">
       <p class="footer__brand">Rijal Fit</p>
-      <p class="footer__sub">Coach santé · Corps &amp; Foi</p>
-      <p class="footer__links"><a href="index.html">Accueil</a> · <a href="https://hijabi-fit.vercel.app/">Pour les sœurs : bilan Hijabi Fit</a></p>
+      <p class="footer__sub">COACH SANTÉ POUR LES HOMMES MUSULMANS</p>
+      <p class="footer__links"><a href="index.html">Accueil</a> · <a href="#recherche">Recherche</a></p>
+      <p class="footer__sisters"><a href="https://hijabi-fit.vercel.app/">Pour les sœurs : bilan Hijabi Fit →</a></p>
       <p class="footer__ctp">Membre du <a href="https://entrepreneur-musulman.com" target="_blank" rel="noopener">Collectif Tariqa PRO</a></p>
     </div>
   </footer>

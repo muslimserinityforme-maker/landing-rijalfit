@@ -65,6 +65,29 @@ const FORM_ENDPOINT = '';
   // Re-déclenche l'apparition au défilement pour les cartes ajoutées
   root.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
 
+  // Recherche : numéro d'épisode ou mot du titre / du résumé
+  const champ = document.getElementById('recherche-champ');
+  const vide = document.getElementById('recherche-vide');
+  const norm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const cards = [...root.querySelectorAll('.episode')];
+  function filtrer() {
+    const q = norm(champ.value).trim().replace(/^(episode|ep)\s*/, '');
+    let n = 0;
+    cards.forEach((card, i) => {
+      const ep = EPISODES[i];
+      const texte = norm(`${ep.numero} episode ${ep.numero} ${ep.titre} ${ep.resume}`);
+      const ok = !q || String(ep.numero) === q || texte.includes(q);
+      card.hidden = !ok;
+      if (ok) n++;
+    });
+    vide.hidden = n > 0;
+  }
+  if (champ) {
+    champ.addEventListener('input', filtrer);
+    if (location.hash === '#recherche') setTimeout(() => champ.focus(), 300);
+    window.addEventListener('hashchange', () => { if (location.hash === '#recherche') champ.focus(); });
+  }
+
   root.addEventListener('submit', async (e) => {
     const form = e.target.closest('.pdf__form');
     if (!form) return;

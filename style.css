@@ -463,7 +463,7 @@ html:not(.js) .section__title::after { transform: scaleX(1); }
 
 /* Mur de visages qui défile */
 .wall { overflow: hidden; margin: 8px 0 44px; padding: 14px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.wall__track { display: flex; gap: 18px; width: max-content; animation: scrollx 40s linear infinite; }
+.wall__track { display: flex; gap: 18px; width: max-content; animation: scrollx 60s linear infinite; }
 .wall:hover .wall__track { animation-play-state: paused; }
 .wall__card {
   width: 190px;
@@ -619,9 +619,36 @@ html:not(.js) .section__title::after { transform: scaleX(1); }
 }
 .btn--ghost:hover { background: rgba(201,168,76,.14); border-color: var(--or); transform: translateY(-3px); box-shadow: none; }
 .btn--ghost::after { display: none; }
-.hero__sisters { margin-top: .5rem; font-size: .85rem; }
-.hero__sisters a { color: #aeb8ab; text-decoration: underline; text-decoration-color: rgba(201,168,76,.5); text-underline-offset: 3px; }
-.hero__sisters a:hover { color: var(--or-light); }
+/* Lien vers le bilan Hijabi Fit : bien visible, couleur rose pour le distinguer du bilan hommes */
+.hero__sisters {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 1.1rem; padding: 10px 20px;
+  font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: .03em;
+  color: #7d1240; text-decoration: none;
+  background: linear-gradient(180deg, #ffe9f0, #f8cfdd);
+  border: 1.5px solid #d96a93; border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.3);
+  transition: transform .2s var(--ease), box-shadow .2s;
+}
+.hero__sisters:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.4); }
+.footer__sisters { margin-top: .9rem; }
+.footer__sisters a {
+  display: inline-block; padding: 8px 18px; border-radius: 999px;
+  color: #7d1240; background: #f8cfdd; border: 1.5px solid #d96a93;
+  font-weight: 600; text-decoration: none; font-size: .92rem;
+}
+.footer__sisters a:hover { background: #ffe9f0; }
+
+/* Titre sur deux lignes précises (téléphone compris) */
+.title-2l { font-size: clamp(1.05rem, 5.1vw, 2.6rem); }
+.title-2l span { display: block; white-space: nowrap; }
+.nav__break { display: none; }
+.temoignage-note { text-align: center; color: var(--gris); font-size: .88rem; margin: 28px auto 0; max-width: 620px; }
+.search { max-width: 620px; margin: 0 auto 32px; }
+.search label { display: block; font-family: 'Rajdhani', sans-serif; font-weight: 700; color: var(--forest); font-size: 1.15rem; margin-bottom: 8px; }
+.search input { width: 100%; padding: 14px 16px; font: inherit; border: 1.5px solid #dccfaa; border-radius: 12px; background: var(--blanc); }
+.search input:focus { outline: none; border-color: var(--or); box-shadow: 0 0 0 3px rgba(201,168,76,.25); }
+.search__empty { margin-top: 14px; color: var(--gris); text-align: center; }
 .footer__links { margin-top: .9rem; font-size: .88rem; color: #8a9588; }
 .footer__links a { color: #aeb8ab; }
 .footer__links a:hover { color: var(--or); }
@@ -711,8 +738,15 @@ html:not(.js) .section__title::after { transform: scaleX(1); }
   .transfo { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .transfo__item:nth-child(3n+2) { margin-top: 0; }
   .transfo__item:nth-child(even) { margin-top: 18px; }
-  .nav { padding: 8px 14px; }
-  .nav__link { display: none; }
+  /* Téléphone : ligne 1 = marque + bouton, ligne 2 = Ressources gratuites + Recherche */
+  .nav { padding: 8px 14px; flex-wrap: wrap; row-gap: 6px; }
+  .nav__brand { order: 1; flex: 1 1 auto; }
+  .nav__links { display: contents; }
+  .nav__links .btn--small { order: 2; font-size: .82rem; padding: 8px 14px; }
+  .nav__break { display: block; order: 3; flex-basis: 100%; height: 0; }
+  .nav__link { order: 4; flex: 1 1 0; text-align: center; padding: 4px 0; font-size: .92rem; border-top: 1px solid rgba(201,168,76,.25); }
+  .hero { padding-top: 132px; }
+  .hero--page { padding-top: 140px; }
   .hero__actions { justify-content: center; }
   .hero__inner { flex-direction: column-reverse; gap: 44px; text-align: center; }
   .hero__title { font-size: clamp(1.4rem, 6.2vw, 2.4rem); }
