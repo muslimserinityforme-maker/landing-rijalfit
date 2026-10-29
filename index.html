@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rijal Fit — Coach Réalignement Corps & Foi</title>
+  <title>Rijal Fit — Coach santé pour les hommes musulmans</title>
   <meta name="description" content="Tu étais sportif avant. Retrouve ta forme et ta régularité dans l'adoration — avec un accompagnement qui s'adapte à ta vraie vie." />
   <meta name="theme-color" content="#142a20" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Rijal Fit — Coach Réalignement Corps & Foi" />
+  <meta property="og:title" content="Rijal Fit — Coach santé pour les hommes musulmans" />
   <meta property="og:description" content="Tu étais sportif avant. Retrouve ta forme et ta régularité dans l'adoration — avec un accompagnement qui s'adapte à ta vraie vie." />
   <meta property="og:image" content="https://landing-3-sepia.vercel.app/images/matt.jpg" />
   <meta property="og:url" content="https://landing-3-sepia.vercel.app/" />
@@ -26,6 +26,14 @@
 
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
+  <nav class="nav" aria-label="Menu principal">
+    <a href="#top" class="nav__brand">Rijal Fit</a>
+    <div class="nav__links">
+      <a href="ressources.html" class="nav__link">Ressources gratuites</a>
+      <a href="https://ton-bilan-sante.vercel.app/" class="btn btn--primary btn--small">Faire mon bilan offert</a>
+    </div>
+  </nav>
+
   <!-- ═══════════════════════════════════════════
        HERO
   ════════════════════════════════════════════ -->
@@ -34,16 +42,18 @@
     <div class="hero__glow hero__glow--2" data-parallax="-0.08" aria-hidden="true"></div>
     <div class="hero__inner">
       <div class="hero__text">
-        <p class="hero__label reveal">Rijal Fit · Coach Réalignement Corps &amp; Foi</p>
+        <p class="hero__label reveal">Coach santé pour les hommes musulmans</p>
         <h1 class="hero__title" data-split>Tu étais sportif avant.<br>Il est temps de te reprendre en main.</h1>
         <p class="hero__sub reveal" style="--d:.5s">
           Pour les hommes musulmans qui veulent retrouver leur forme et leur régularité dans l'adoration — avec un accompagnement qui s'adapte à <em>ta</em> vraie vie, pas l'inverse.
         </p>
         <div class="reveal" style="--d:.65s">
-          <a href="https://calendly.com/muslimserinityforme/programme-ton-bilan-intermediaire" class="btn btn--primary" target="_blank" rel="noopener">
-            Réserver mon appel découverte
-          </a>
-          <p class="hero__reassurance">Gratuit · Sans engagement · 30 min</p>
+          <div class="hero__actions">
+            <a href="https://ton-bilan-sante.vercel.app/" class="btn btn--primary">Faire mon bilan offert</a>
+            <a href="https://calendly.com/muslimserinityforme/programme-ton-bilan-intermediaire" class="btn btn--ghost" target="_blank" rel="noopener">Réserver mon appel découverte</a>
+          </div>
+          <p class="hero__reassurance">Bilan en 2 minutes · Gratuit · Sans engagement</p>
+          <p class="hero__sisters"><a href="https://hijabi-fit.vercel.app/">Pour les sœurs : bilan Hijabi Fit</a></p>
         </div>
       </div>
       <div class="hero__image reveal reveal--zoom" style="--d:.3s" data-parallax="0.06">
@@ -51,7 +61,7 @@
         <img src="images/matt.jpg" alt="Matthieu — Coach Rijal Fit" />
         <span class="chip chip--1" aria-hidden="true">Corps</span>
         <span class="chip chip--2" aria-hidden="true">Foi</span>
-        <span class="chip chip--3" aria-hidden="true">Régularité</span>
+        <span class="chip chip--3" aria-hidden="true">Discipline</span>
       </div>
     </div>
     <a href="#probleme" class="hero__scroll" aria-label="Descendre"><span></span></a>
@@ -61,11 +71,15 @@
        BANDEAU DÉFILANT
   ════════════════════════════════════════════ -->
   <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <span>Réalignement</span><span>Amānah</span><span>Régularité</span><span>Corps &amp; Foi</span><span>Discipline</span><span>Mou'min qawi</span>
-      <span>Réalignement</span><span>Amānah</span><span>Régularité</span><span>Corps &amp; Foi</span><span>Discipline</span><span>Mou'min qawi</span>
-      <span>Réalignement</span><span>Amānah</span><span>Régularité</span><span>Corps &amp; Foi</span><span>Discipline</span><span>Mou'min qawi</span>
-      <span>Réalignement</span><span>Amānah</span><span>Régularité</span><span>Corps &amp; Foi</span><span>Discipline</span><span>Mou'min qawi</span>
+    <div class="marquee__track" id="marquee-track">
+      <span>Amānah</span><span>Discipline</span><span>Mou'min qawi</span>
+      <span>Amānah</span><span>Discipline</span><span>Mou'min qawi</span>
+      <span>Amānah</span><span>Discipline</span><span>Mou'min qawi</span>
+      <span>Amānah</span><span>Discipline</span><span>Mou'min qawi</span>
+      <span>Amānah</span><span>Discipline</span><span>Mou'min qawi</span>
+      <span>Amānah</span><span>Discipline</span><span>Mou'min qawi</span>
+      <span>Amānah</span><span>Discipline</span><span>Mou'min qawi</span>
+      <span>Amānah</span><span>Discipline</span><span>Mou'min qawi</span>
     </div>
   </div>
 
@@ -160,7 +174,7 @@
               <li>Commence par ton <strong>pourquoi</strong></li>
               <li>Trouve la racine de ton blocage</li>
               <li>Relie chaque effort à ta foi</li>
-              <li>T'accompagne vers un <strong>réalignement</strong></li>
+              <li>Te reprendre en main, corps et foi ensemble, et tenir dans la durée</li>
             </ul>
           </div>
         </div>
@@ -177,7 +191,7 @@
     ════════════════════════════════════════════ -->
     <section class="temoignages" id="temoignages">
       <div class="container">
-        <h2 class="section__title reveal">Ils ont fait le réalignement</h2>
+        <h2 class="section__title reveal">Des hommes comme toi, qui s'y sont remis</h2>
       </div>
 
       <!-- Mur de visages : met la photo de chacun dans images/clients/<prenom>.jpg -->
@@ -194,6 +208,19 @@
           <a class="wall__card" href="#temoignage-mehdi"><span class="avatar"><b>M</b><img src="images/clients/mehdi.jpg" alt="" loading="lazy" onerror="this.remove()" /></span><span class="wall__name">Mehdi</span><span class="wall__role">Témoignage vidéo</span></a>
           <a class="wall__card" href="#temoignage-habib"><span class="avatar"><b>H</b><img src="images/clients/habib.jpg" alt="" loading="lazy" onerror="this.remove()" /></span><span class="wall__name">Habib</span><span class="wall__role">Témoignage vidéo</span></a>
         </div>
+      </div>
+
+      <!-- Transformations : photos dans images/transformations/ (avant | après déjà montés) -->
+      <div class="container">
+        <div class="transfo">
+          <figure class="transfo__item reveal" style="--d:.05s"><img src="images/transformations/t2.jpg" alt="Avant et après d'un client Rijal Fit" loading="lazy" /></figure>
+          <figure class="transfo__item reveal" style="--d:.15s"><img src="images/transformations/t5.jpg" alt="Avant et après d'un client Rijal Fit" loading="lazy" /></figure>
+          <figure class="transfo__item reveal" style="--d:.25s"><img src="images/transformations/t3.jpg" alt="Avant et après d'un client Rijal Fit" loading="lazy" /></figure>
+          <figure class="transfo__item reveal" style="--d:.05s"><img src="images/transformations/t8.jpg" alt="Avant et après d'un client Rijal Fit" loading="lazy" /></figure>
+          <figure class="transfo__item reveal" style="--d:.15s"><img src="images/transformations/t9.jpg" alt="Avant et après d'un client Rijal Fit" loading="lazy" /></figure>
+          <figure class="transfo__item reveal" style="--d:.25s"><img src="images/transformations/t6.jpg" alt="Avant et après d'un client Rijal Fit" loading="lazy" /></figure>
+        </div>
+        <p class="transfo__note reveal">Chaque parcours est différent : ces photos ne promettent aucun résultat. Elles montrent ce que la régularité change avec le temps.</p>
       </div>
 
       <div class="container">
@@ -310,7 +337,7 @@
     <section class="cta-final">
       <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
       <div class="container cta-final__inner">
-        <h2 class="cta-final__title reveal">Prêt à commencer<br>ton réalignement ?</h2>
+        <h2 class="cta-final__title reveal">Prêt à te reprendre en main ?</h2>
         <p class="cta-final__sub reveal" style="--d:.1s">
           Un appel de 30 min. On fait le point sur ta situation. Sans pression.
         </p>
@@ -331,13 +358,14 @@
   <footer class="footer">
     <div class="container">
       <p class="footer__brand">Rijal Fit</p>
-      <p class="footer__sub">Coach Réalignement Corps &amp; Foi</p>
+      <p class="footer__sub">Coach santé · Corps &amp; Foi</p>
+      <p class="footer__links"><a href="ressources.html">Ressources gratuites</a> · <a href="https://hijabi-fit.vercel.app/">Pour les sœurs : bilan Hijabi Fit</a></p>
       <p class="footer__ctp">Membre du <a href="https://entrepreneur-musulman.com" target="_blank" rel="noopener">Collectif Tariqa PRO</a></p>
     </div>
   </footer>
 
   <!-- Bouton flottant : apparaît après le haut de page -->
-  <a href="https://calendly.com/muslimserinityforme/programme-ton-bilan-intermediaire" class="float-cta btn btn--primary" id="float-cta" target="_blank" rel="noopener">Réserver mon appel</a>
+  <a href="https://ton-bilan-sante.vercel.app/" class="float-cta btn btn--primary" id="float-cta">Faire mon bilan offert</a>
 
   <script src="script.js"></script>
 </body>

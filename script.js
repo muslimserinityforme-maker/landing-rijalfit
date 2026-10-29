@@ -46,6 +46,8 @@
   const hero = document.getElementById('top');
   const finalCta = document.querySelector('.cta-final');
   const parallax = [...document.querySelectorAll('[data-parallax]')];
+  const ring = document.querySelector('.hero__ring');
+  const track = document.getElementById('marquee-track');
   let ticking = false;
 
   function onScroll() {
@@ -58,6 +60,15 @@
         const k = parseFloat(el.dataset.parallax) || 0;
         if (y < window.innerHeight * 1.4) el.style.setProperty('--py', (y * k).toFixed(1) + 'px');
       });
+    }
+
+    // Cercle doré et bandeau : ils ne bougent que lorsque tu fais défiler
+    if (!reduce) {
+      if (ring) ring.style.setProperty('--rot', (y * 0.35).toFixed(1) + 'deg');
+      if (track) {
+        const half = track.scrollWidth / 2;
+        if (half > 0) track.style.setProperty('--mx', (-((y * 0.7) % half)).toFixed(1) + 'px');
+      }
     }
 
     if (floatCta && hero && finalCta) {

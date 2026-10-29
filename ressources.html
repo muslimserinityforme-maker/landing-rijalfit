@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ressources gratuites — Rijal Fit</title>
+  <meta name="description" content="La série santé de Rijal Fit : une vidéo et un PDF par épisode, pour les hommes musulmans qui veulent reprendre leur corps en main." />
+  <meta name="theme-color" content="#142a20" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Menu principal">
+    <a href="index.html" class="nav__brand">Rijal Fit</a>
+    <div class="nav__links">
+      <a href="index.html" class="nav__link">Accueil</a>
+      <a href="https://ton-bilan-sante.vercel.app/" class="btn btn--primary btn--small">Faire mon bilan offert</a>
+    </div>
+  </nav>
+
+  <header class="hero hero--page">
+    <div class="hero__glow hero__glow--1" data-parallax="0.12" aria-hidden="true"></div>
+    <div class="container">
+      <p class="hero__label reveal">Rijal Fit · Série santé</p>
+      <h1 class="hero__title" data-split>Ressources gratuites</h1>
+      <p class="hero__sub reveal" style="--d:.4s">
+        « Ton corps a un droit sur toi. » Une vidéo et un PDF par épisode, pour comprendre ce que ton corps te dit et savoir par où reprendre.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="episodes">
+      <div class="container">
+        <!-- Les épisodes sont générés par ressources.js à partir de la liste EPISODES -->
+        <div class="episodes__list" id="episodes"></div>
+        <noscript><p>Active JavaScript pour voir les épisodes.</p></noscript>
+      </div>
+    </section>
+
+    <section class="cta-final">
+      <div class="container cta-final__inner">
+        <h2 class="cta-final__title reveal">Et toi, où en es-tu&nbsp;?</h2>
+        <p class="cta-final__sub reveal" style="--d:.1s">
+          9 questions, 2 minutes, un message personnel à la fin.
+        </p>
+        <div class="reveal" style="--d:.2s">
+          <a href="https://ton-bilan-sante.vercel.app/" class="btn btn--primary btn--large btn--pulse">Faire mon bilan offert</a>
+        </div>
+        <p class="cta-final__reassurance">Gratuit · Confidentiel · Sans engagement</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__brand">Rijal Fit</p>
+      <p class="footer__sub">Coach santé · Corps &amp; Foi</p>
+      <p class="footer__links"><a href="index.html">Accueil</a> · <a href="https://hijabi-fit.vercel.app/">Pour les sœurs : bilan Hijabi Fit</a></p>
+      <p class="footer__ctp">Membre du <a href="https://entrepreneur-musulman.com" target="_blank" rel="noopener">Collectif Tariqa PRO</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="ressources.js"></script>
+</body>
+</html>
