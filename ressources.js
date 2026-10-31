@@ -2,7 +2,7 @@
 //  AJOUTER UN ÉPISODE = ajouter un bloc dans EPISODES (rien d'autre).
 //  - youtubeId : l'identifiant de la vidéo (la fin du lien youtu.be/XXXX).
 //                Vide → la carte affiche « Bientôt disponible ».
-//  - pdfUrl    : le lien du PDF (ex. 'pdf/episode-1.pdf').
+//  - pdfUrl    : le nom du PDF privé (ex. 'episode-1'), donné après l'e-mail.
 //                Vide → le PDF est annoncé « bientôt disponible ».
 //  - bilanUrl  : le bilan proposé en bas de la carte.
 // ═══════════════════════════════════════════════════════════════
@@ -12,7 +12,7 @@ const EPISODES = [
     titre: '5 signes que ton corps te parle',
     resume: 'Fatigue, sommeil, ventre, humeur… ton corps envoie des messages bien avant que ça casse. On apprend à les lire.',
     youtubeId: 'JVe0MNc1iZo',
-    pdfUrl: 'pdf/episode-1.pdf',
+    pdfUrl: 'episode-1',
     pdfTitre: 'Le questionnaire de fatigue de Pichot et l\'exercice « Si ton corps te parlait »',
     bilanUrl: 'https://ton-bilan-sante.vercel.app/',
   },
@@ -39,7 +39,7 @@ const FORM_ENDPOINT = 'https://ton-bilan-sante.vercel.app/api/log-ressource';
     return `
       <div class="pdf">
         <h4 class="pdf__title">${esc(ep.pdfTitre)}</h4>
-        <p class="pdf__text">Laisse ton prénom et ton e-mail pour recevoir le PDF.</p>
+        <p class="pdf__text">Laisse ton prénom et ton e-mail, je t'envoie le PDF.</p>
         <form class="pdf__form" data-pdf="${esc(ep.pdfUrl)}" novalidate>
           <input type="text" name="prenom" placeholder="Ton prénom" autocomplete="given-name" required />
           <input type="email" name="email" placeholder="Ton e-mail" autocomplete="email" required />
@@ -111,7 +111,10 @@ const FORM_ENDPOINT = 'https://ton-bilan-sante.vercel.app/api/log-ressource';
         body: JSON.stringify({ prenom, email, ressource: form.dataset.pdf, conseils: form.conseils.checked }),
       });
       if (!reponse.ok) throw new Error('Enregistrement refusé');
-      msg.innerHTML = `Merci ${esc(prenom)} ! <a href="${esc(form.dataset.pdf)}" target="_blank" rel="noopener">Ouvre ton PDF ici</a>.`;
+      const { url } = await reponse.json();
+      msg.innerHTML = url
+        ? `Merci ${esc(prenom)} ! <a href="${esc(url)}" target="_blank" rel="noopener">Télécharge ton PDF ici</a>.`
+        : `Merci ${esc(prenom)} ! Je t'envoie le PDF par e-mail sous 24 h.`;
     } catch (err) {
       msg.textContent = 'Un souci est survenu. Réessaie dans un instant.';
     }
