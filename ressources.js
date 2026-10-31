@@ -11,17 +11,16 @@ const EPISODES = [
     numero: 1,
     titre: '5 signes que ton corps te parle',
     resume: 'Fatigue, sommeil, ventre, humeur… ton corps envoie des messages bien avant que ça casse. On apprend à les lire.',
-    youtubeId: '',
+    youtubeId: 'JVe0MNc1iZo',
     pdfUrl: 'pdf/episode-1.pdf',
     pdfTitre: 'Le questionnaire de fatigue de Pichot et l\'exercice « Si ton corps te parlait »',
     bilanUrl: 'https://ton-bilan-sante.vercel.app/',
   },
 ];
 
-// Pour recevoir les prénoms + e-mails dans une Google Sheet : colle ici l'adresse
-// du point d'entrée (même principe que api/log-lead.js des bilans). Vide = formulaire
-// prêt mais non branché : rien n'est envoyé et le PDF n'est pas donné.
-const FORM_ENDPOINT = '';
+// Les prénoms + e-mails arrivent dans l'onglet « Bilans » de la Google Sheet.
+// Vide = formulaire prêt mais non branché : rien n'est envoyé et le PDF n'est pas donné.
+const FORM_ENDPOINT = 'https://ton-bilan-sante.vercel.app/api/log-ressource';
 
 (function () {
   const root = document.getElementById('episodes');
@@ -37,22 +36,16 @@ const FORM_ENDPOINT = '';
   }
 
   function pdfBlock(ep) {
-    // Sans point d'entrée pour les e-mails, le PDF se télécharge directement
-    if (ep.pdfUrl && !FORM_ENDPOINT) {
-      return `
-      <div class="pdf">
-        <h4 class="pdf__title">${esc(ep.pdfTitre)}</h4>
-        <a class="btn btn--primary" href="${esc(ep.pdfUrl)}" target="_blank" rel="noopener" download>Télécharger le PDF</a>
-      </div>`;
-    }
     return `
       <div class="pdf">
         <h4 class="pdf__title">${esc(ep.pdfTitre)}</h4>
-        <p class="pdf__text">Laisse ton prénom et ton e-mail, je te l'envoie.</p>
+        <p class="pdf__text">Laisse ton prénom et ton e-mail pour recevoir le PDF.</p>
         <form class="pdf__form" data-pdf="${esc(ep.pdfUrl)}" novalidate>
           <input type="text" name="prenom" placeholder="Ton prénom" autocomplete="given-name" required />
           <input type="email" name="email" placeholder="Ton e-mail" autocomplete="email" required />
+          <label class="pdf__text" style="display:flex;gap:8px;align-items:flex-start;font-size:.85rem"><input type="checkbox" name="conseils" style="width:auto;margin-top:3px" /> Je veux aussi recevoir des conseils et des nouvelles de Rijal Fit par e-mail (facultatif).</label>
           <button type="submit" class="btn btn--primary">Recevoir le PDF</button>
+          <p class="pdf__text" style="font-size:.78rem">Ton prénom et ton e-mail sont enregistrés par Rijal Fit pour te donner ce PDF. Tu peux demander leur suppression à tout moment.</p>
           <p class="pdf__msg" role="status" aria-live="polite"></p>
         </form>
       </div>`;
@@ -112,11 +105,12 @@ const FORM_ENDPOINT = '';
       return;
     }
     try {
-      await fetch(FORM_ENDPOINT, {
+      const reponse = await fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ event: 'ressource', prenom, email, ressource: form.dataset.pdf }),
+        body: JSON.stringify({ prenom, email, ressource: form.dataset.pdf, conseils: form.conseils.checked }),
       });
+      if (!reponse.ok) throw new Error('Enregistrement refusé');
       msg.innerHTML = `Merci ${esc(prenom)} ! <a href="${esc(form.dataset.pdf)}" target="_blank" rel="noopener">Ouvre ton PDF ici</a>.`;
     } catch (err) {
       msg.textContent = 'Un souci est survenu. Réessaie dans un instant.';
