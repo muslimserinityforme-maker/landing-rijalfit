@@ -12,8 +12,8 @@ const EPISODES = [
     titre: '5 signes que ton corps te parle',
     resume: 'Fatigue, sommeil, ventre, humeur… ton corps envoie des messages bien avant que ça casse. On apprend à les lire.',
     youtubeId: '',
-    pdfUrl: '',
-    pdfTitre: 'Le PDF de l\'épisode 1',
+    pdfUrl: 'pdf/episode-1.pdf',
+    pdfTitre: 'Le questionnaire de fatigue de Pichot et l\'exercice « Si ton corps te parlait »',
     bilanUrl: 'https://ton-bilan-sante.vercel.app/',
   },
 ];
@@ -31,12 +31,20 @@ const FORM_ENDPOINT = '';
 
   function videoBlock(ep) {
     if (ep.youtubeId) {
-      return `<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/${esc(ep.youtubeId)}" title="${esc(ep.titre)}" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+      return `<div class="video-wrapper"><iframe src="https://www.youtube-nocookie.com/embed/${esc(ep.youtubeId)}" title="${esc(ep.titre)}" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
     }
     return `<div class="soon"><span class="soon__badge">Bientôt disponible</span><p>La vidéo sort très bientôt sur YouTube.</p></div>`;
   }
 
   function pdfBlock(ep) {
+    // Sans point d'entrée pour les e-mails, le PDF se télécharge directement
+    if (ep.pdfUrl && !FORM_ENDPOINT) {
+      return `
+      <div class="pdf">
+        <h4 class="pdf__title">${esc(ep.pdfTitre)}</h4>
+        <a class="btn btn--primary" href="${esc(ep.pdfUrl)}" target="_blank" rel="noopener" download>Télécharger le PDF</a>
+      </div>`;
+    }
     return `
       <div class="pdf">
         <h4 class="pdf__title">${esc(ep.pdfTitre)}</h4>
